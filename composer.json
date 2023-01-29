@@ -18,7 +18,7 @@
     "require": {
         "php": "^7.2 || ^8.0",
         "ivory/json-builder": "^3.0",
-        "symfony/event-dispatcher": "^5.0"
+        "symfony/event-dispatcher": "^5.0 || ^6.0"
     },
     "require-dev": {
         "ivory/serializer": "^1.0",
