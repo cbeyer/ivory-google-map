@@ -13,9 +13,12 @@ namespace Ivory\GoogleMap\Service\Geocoder;
 
 use Http\Client\HttpClient;
 use Http\Message\MessageFactory;
+use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\Service\AbstractSerializableService;
+use Ivory\GoogleMap\Service\Base\Geometry;
 use Ivory\GoogleMap\Service\Geocoder\Request\GeocoderRequestInterface;
 use Ivory\GoogleMap\Service\Geocoder\Response\GeocoderResponse;
+use Ivory\GoogleMap\Service\Geocoder\Response\GeocoderResult;
 use Ivory\Serializer\Context\Context;
 use Ivory\Serializer\Naming\SnakeCaseNamingStrategy;
 use Ivory\Serializer\SerializerInterface;
@@ -46,11 +49,19 @@ class GeocoderService extends AbstractSerializableService
         $httpRequest = $this->createRequest($request);
         $httpResponse = $this->getClient()->sendRequest($httpRequest);
 
-        $response = $this->deserialize(
-            $httpResponse,
-            GeocoderResponse::class,
-            (new Context())->setNamingStrategy(new SnakeCaseNamingStrategy())
-        );
+        $array = json_decode($httpResponse->getBody(), true);
+
+        $response = new GeocoderResponse();
+        $response->setStatus($array['status']);
+
+        foreach ($array['results'] as $result) {
+            $geocoderResult  = new GeocoderResult();
+            $geometry = new Geometry();
+            $location = new Coordinate($result['geometry']['location']['lat'], $result['geometry']['location']['lng']);
+            $geometry->setLocation($location);
+            $geocoderResult->setGeometry($geometry);
+            $response->addResult($geocoderResult);
+        }
 
         $response->setRequest($request);
 
