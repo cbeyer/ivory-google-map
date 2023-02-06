@@ -83,7 +83,7 @@ class GeoJsonLayerSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_LAYER_GEO_JSON_LAYER => 'handleMap'];
     }
