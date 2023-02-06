@@ -74,7 +74,7 @@ class MarkerSubscriber extends AbstractMarkerSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_OVERLAY_MARKER => 'handleMap'];
     }
