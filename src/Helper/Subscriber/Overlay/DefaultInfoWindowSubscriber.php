@@ -70,7 +70,7 @@ class DefaultInfoWindowSubscriber extends AbstractInfoWindowSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_OVERLAY_INFO_WINDOW => 'handleMap'];
     }
