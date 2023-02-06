@@ -36,7 +36,7 @@ abstract class AbstractDelegateSubscriber extends AbstractSubscriber implements 
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         $events = [];
 
