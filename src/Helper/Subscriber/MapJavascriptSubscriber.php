@@ -112,7 +112,7 @@ class MapJavascriptSubscriber extends AbstractDelegateSubscriber
     /**
      * @return array
      */
-    public static function getDelegatedSubscribedEvents()
+    public static function getDelegatedSubscribedEvents(): array
     {
         return [
             ApiEvents::JAVASCRIPT_MAP => [],
