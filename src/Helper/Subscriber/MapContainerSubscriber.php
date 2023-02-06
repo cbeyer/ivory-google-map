@@ -60,7 +60,7 @@ class MapContainerSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_INIT_CONTAINER => 'handleMap'];
     }
