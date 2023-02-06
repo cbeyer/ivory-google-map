@@ -86,7 +86,7 @@ class InfoBoxSubscriber extends AbstractInfoWindowSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             ApiEvents::JAVASCRIPT_MAP                 => 'handleApi',
