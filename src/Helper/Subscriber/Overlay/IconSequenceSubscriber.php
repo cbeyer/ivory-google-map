@@ -88,7 +88,7 @@ class IconSequenceSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_OVERLAY_ICON_SEQUENCE => 'handleMap'];
     }
