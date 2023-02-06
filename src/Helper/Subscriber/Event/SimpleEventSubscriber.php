@@ -88,7 +88,7 @@ class SimpleEventSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_EVENT_EVENT => 'handleMap'];
     }
